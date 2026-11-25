@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FurnitureStore_Кокорин.Classes;
 
 namespace FurnitureStore_Кокорин.Pages
 {
@@ -20,9 +21,20 @@ namespace FurnitureStore_Кокорин.Pages
     /// </summary>
     public partial class Main : Page
     {
+        public List<Item> items = new List<Item>();
         public Main()
         {
             InitializeComponent();
+            items.Add(new Item("Шкаф", 20000, "ejfjekf.jpg"));
+            LoadItems();
         }
+        public void LoadItems()
+        {
+            parrent.Children.Clear();
+
+            foreach (Item item in items)
+            {
+                parrent.Children.Add(new Elements.Item(item));
+            }
     }
 }
