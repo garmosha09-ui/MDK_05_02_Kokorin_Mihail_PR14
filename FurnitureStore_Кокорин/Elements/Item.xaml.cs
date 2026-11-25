@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+
 
 namespace FurnitureStore_Кокорин.Elements
 {
@@ -20,9 +22,23 @@ namespace FurnitureStore_Кокорин.Elements
     /// </summary>
     public partial class Item : UserControl
     {
-        public Item()
+        public Item(Classes.Item item)
         {
             InitializeComponent();
+
+            if(item != null)
+            {
+                if (File.Exists(Directory.GetCurrentDirectory() + "/Images/Items/" + item.src))
+                {
+                    image.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/Items/" + item.src));
+                }
+                else
+                {
+                    image.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "/Images/Items/placeholder.png"));
+                }
+                price.Content = item.price;
+                name.Content = item.name;
+            }
         }
     }
 }

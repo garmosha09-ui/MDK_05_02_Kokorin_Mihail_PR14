@@ -36,5 +36,6 @@ namespace FurnitureStore_Кокорин.Pages
             {
                 parrent.Children.Add(new Elements.Item(item));
             }
+        }
     }
 }
